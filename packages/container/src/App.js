@@ -1,20 +1,24 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import { StylesProvider, createGenerateClassName } from "@material-ui/core/styles";
+
 import MarketingApp from "./components/MarketingApp";
-import { StylesProvider, createGenerateClassName } from '@material-ui/core';
-// To avid css class collison
+import Header from "./components/Header";
+
 const generateClassName = createGenerateClassName({
-  productionPrefix = 'co',
+  productionPrefix = 'ma',
 });
 
 export default () => {
   return (
-    <BrowserRouter>
+    <div>
       <StylesProvider generateClassName={generateClassName}>
-        {/* <Header /> */}
-        <MarketingApp />
+        <BrowserRouter>
+          <Header />
+          <MarketingApp />
+        </BrowserRouter>
       </StylesProvider>
-    </BrowserRouter>
+    </div>
 
   );
 };
